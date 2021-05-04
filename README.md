@@ -1,6 +1,7 @@
 ###################
 Step wise details
 ###################
+
 1.Get the url setup for your location from below link
 https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2
 
