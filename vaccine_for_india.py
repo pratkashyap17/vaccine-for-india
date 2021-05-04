@@ -1,3 +1,18 @@
+'''
+========================================================================================================================================
+Program Name	: vaccine_for_india.py
+Description	    : This process gets the details for Vaccination information from co-win portal.
+Input		    : N/A
+Ouput           : N/A
+Author		    : Pratik Saxena
+======================================================================================
+============================== MODIFICATION HISTORY============================
+  DATE(MM-DD-YYYY)      PROGRAMMER                       MODIFICATION
+======================================================================================
+  04-05-2021            Pratik Saxena        Initial Version
+======================================================================================
+'''
+
 import requests,json
 import smtplib, ssl
 import csv
@@ -13,6 +28,7 @@ now = datetime.now()
 EndDate = (date.today() + timedelta(days=1)).strftime("%d-%m-%Y")
 
 print("process started at {}".format(now))
+#URL to get from co-win Public API , update the URL based on location
 url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=363&date={}".format(EndDate)
 
 payload = {}
@@ -22,6 +38,7 @@ response = requests.request("GET", url, headers=headers, data = payload)
 pretty_json = json.loads(response.text)
 mail_flag = 0
 for func in pretty_json["sessions"]:
+    # This will filter for centre which are allowing 18+ 
     if func["min_age_limit"] < 45:
         mail_flag = 1
 
