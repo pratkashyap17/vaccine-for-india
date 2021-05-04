@@ -1,5 +1,5 @@
 ###################
-Step wise details
+Stepwise details
 ###################
 
 1.Get the url setup for your location from below link
